@@ -158,10 +158,39 @@ internal class Program
 
     private static void Zaokraglij()
     {
-        double a = PobierzLiczbe("Podaj liczbę do zaokrąglenia: ");
+        while (true)
+        {
+            double a = PobierzLiczbe("Podaj liczbę do zaokrąglenia: ");
 
-        double wynik = Math.Round(a);
-        Console.WriteLine($"Zaokrąglony wynik: {wynik}");
+            Console.WriteLine("\nWybierz rodzaj zaokrąglenia:");
+            Console.WriteLine("1. Zaokrąglij w dół");
+            Console.WriteLine("2. Zaokrąglij w górę");
+            Console.WriteLine("3. Standardowe zaokrąglenie");
+            Console.WriteLine("4. Powrót do głównego menu");
+            Console.Write("Wybierz opcję (1-4): ");
+            string wybor = Console.ReadLine();
+
+            switch (wybor)
+            {
+                case "1":
+                    Console.WriteLine($"Wynik zaokrąglenia w dół: {Math.Floor(a)}");
+                    break;
+
+                case "2":
+                    Console.WriteLine($"Wynik zaokrąglenia w górę: {Math.Ceiling(a)}");
+                    break;
+
+                case "3":
+                    Console.WriteLine($"Standardowy wynik zaokrąglenia: {Math.Round(a)}");
+                    break;
+
+                case "4":
+                    return; // Powrót do głównego menu
+                default:
+                    Console.WriteLine("Niepoprawna opcja. Spróbuj ponownie.");
+                    break;
+            }
+        }
     }
 
     private static void Logarytm()

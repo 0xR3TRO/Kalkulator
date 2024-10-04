@@ -181,60 +181,74 @@ internal class Program
 
     private static void ObliczeniaDlaFigur()
     {
-        Console.WriteLine("Wybierz figurę:");
-        Console.WriteLine("1. Czworokąt");
-        Console.WriteLine("2. Trójkąt");
-        Console.WriteLine("3. Koło");
-        Console.Write("Wybierz opcję (1-3): ");
-
-        string wyborFigury = Console.ReadLine();
-
-        switch (wyborFigury)
+        while (true)
         {
-            case "1":
-                ObliczeniaCzworokat();
-                break;
+            Console.WriteLine("\nWybierz figurę:");
+            Console.WriteLine("1. Czworokąt");
+            Console.WriteLine("2. Trójkąt");
+            Console.WriteLine("3. Koło");
+            Console.WriteLine("4. Powrót do głównego menu");
+            Console.Write("Wybierz opcję (1-4): ");
 
-            case "2":
-                ObliczeniaTrojkat();
-                break;
+            string wyborFigury = Console.ReadLine();
 
-            case "3":
-                ObliczeniaKolo();
-                break;
+            switch (wyborFigury)
+            {
+                case "1":
+                    ObliczeniaCzworokat();
+                    break;
 
-            default:
-                Console.WriteLine("Niepoprawna opcja.");
-                break;
+                case "2":
+                    ObliczeniaTrojkat();
+                    break;
+
+                case "3":
+                    ObliczeniaKolo();
+                    break;
+
+                case "4":
+                    return; // Powrót do głównego menu
+                default:
+                    Console.WriteLine("Niepoprawna opcja. Spróbuj ponownie.");
+                    break;
+            }
         }
     }
 
     private static void ObliczeniaCzworokat()
     {
-        Console.WriteLine("Wybierz rodzaj czworokąta:");
-        Console.WriteLine("1. Kwadrat");
-        Console.WriteLine("2. Prostokąt");
-        Console.Write("Wybierz opcję (1-2): ");
-        string wyborCzworokata = Console.ReadLine();
+        while (true)
+        {
+            Console.WriteLine("\nWybierz rodzaj czworokąta:");
+            Console.WriteLine("1. Kwadrat");
+            Console.WriteLine("2. Prostokąt");
+            Console.WriteLine("3. Powrót do menu figur");
+            Console.Write("Wybierz opcję (1-3): ");
+            string wyborCzworokata = Console.ReadLine();
 
-        if (wyborCzworokata == "1")
-        {
-            double bok = PobierzLiczbe("Podaj długość boku: ");
-            double pole = bok * bok;
-            double obwod = 4 * bok;
-            Console.WriteLine($"Pole: {pole}, Obwód: {obwod}");
-        }
-        else if (wyborCzworokata == "2")
-        {
-            double a = PobierzLiczbe("Podaj długość pierwszego boku: ");
-            double b = PobierzLiczbe("Podaj długość drugiego boku: ");
-            double pole = a * b;
-            double obwod = 2 * (a + b);
-            Console.WriteLine($"Pole: {pole}, Obwód: {obwod}");
-        }
-        else
-        {
-            Console.WriteLine("Niepoprawna opcja.");
+            if (wyborCzworokata == "1")
+            {
+                double bok = PobierzLiczbe("Podaj długość boku: ");
+                double pole = bok * bok;
+                double obwod = 4 * bok;
+                Console.WriteLine($"Pole: {pole}, Obwód: {obwod}");
+            }
+            else if (wyborCzworokata == "2")
+            {
+                double a = PobierzLiczbe("Podaj długość pierwszego boku: ");
+                double b = PobierzLiczbe("Podaj długość drugiego boku: ");
+                double pole = a * b;
+                double obwod = 2 * (a + b);
+                Console.WriteLine($"Pole: {pole}, Obwód: {obwod}");
+            }
+            else if (wyborCzworokata == "3")
+            {
+                return; // Powrót do menu figur
+            }
+            else
+            {
+                Console.WriteLine("Niepoprawna opcja. Spróbuj ponownie.");
+            }
         }
     }
 

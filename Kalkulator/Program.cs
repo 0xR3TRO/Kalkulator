@@ -66,13 +66,27 @@ internal class Program
         }
     }
 
+    private static double PobierzLiczbe(string komunikat)
+    {
+        double liczba;
+        while (true)
+        {
+            Console.Write(komunikat);
+            if (double.TryParse(Console.ReadLine(), out liczba))
+            {
+                return liczba;
+            }
+            else
+            {
+                Console.WriteLine("Niepoprawna wartość. Podaj liczbę.");
+            }
+        }
+    }
+
     private static void ProsteDzialania()
     {
-        Console.Write("Podaj pierwszą liczbę: ");
-        double a = Convert.ToDouble(Console.ReadLine());
-
-        Console.Write("Podaj drugą liczbę: ");
-        double b = Convert.ToDouble(Console.ReadLine());
+        double a = PobierzLiczbe("Podaj pierwszą liczbę: ");
+        double b = PobierzLiczbe("Podaj drugą liczbę: ");
 
         Console.Write("Podaj operację (+, -, *, /): ");
         char operacja = Console.ReadLine()[0];
@@ -113,16 +127,14 @@ internal class Program
 
     private static void PotegaPierwiastek()
     {
-        Console.Write("Podaj liczbę: ");
-        double a = Convert.ToDouble(Console.ReadLine());
+        double a = PobierzLiczbe("Podaj liczbę: ");
 
         Console.Write("Wybierz operację (potęga - p, pierwiastek - r): ");
         char operacja = Console.ReadLine()[0];
 
         if (operacja == 'p')
         {
-            Console.Write("Podaj wykładnik: ");
-            double b = Convert.ToDouble(Console.ReadLine());
+            double b = PobierzLiczbe("Podaj wykładnik: ");
             double wynik = Math.Pow(a, b);
             Console.WriteLine($"Wynik: {wynik}");
         }
@@ -146,8 +158,7 @@ internal class Program
 
     private static void Zaokraglij()
     {
-        Console.Write("Podaj liczbę do zaokrąglenia: ");
-        double a = Convert.ToDouble(Console.ReadLine());
+        double a = PobierzLiczbe("Podaj liczbę do zaokrąglenia: ");
 
         double wynik = Math.Round(a);
         Console.WriteLine($"Zaokrąglony wynik: {wynik}");
@@ -155,8 +166,7 @@ internal class Program
 
     private static void Logarytm()
     {
-        Console.Write("Podaj liczbę: ");
-        double a = Convert.ToDouble(Console.ReadLine());
+        double a = PobierzLiczbe("Podaj liczbę: ");
 
         if (a > 0)
         {
@@ -209,18 +219,15 @@ internal class Program
 
         if (wyborCzworokata == "1")
         {
-            Console.Write("Podaj długość boku: ");
-            double bok = Convert.ToDouble(Console.ReadLine());
+            double bok = PobierzLiczbe("Podaj długość boku: ");
             double pole = bok * bok;
             double obwod = 4 * bok;
             Console.WriteLine($"Pole: {pole}, Obwód: {obwod}");
         }
         else if (wyborCzworokata == "2")
         {
-            Console.Write("Podaj długość pierwszego boku: ");
-            double a = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Podaj długość drugiego boku: ");
-            double b = Convert.ToDouble(Console.ReadLine());
+            double a = PobierzLiczbe("Podaj długość pierwszego boku: ");
+            double b = PobierzLiczbe("Podaj długość drugiego boku: ");
             double pole = a * b;
             double obwod = 2 * (a + b);
             Console.WriteLine($"Pole: {pole}, Obwód: {obwod}");
@@ -238,8 +245,7 @@ internal class Program
 
     private static void ObliczeniaKolo()
     {
-        Console.Write("Podaj promień koła: ");
-        double r = Convert.ToDouble(Console.ReadLine());
+        double r = PobierzLiczbe("Podaj promień koła: ");
 
         double pole = Math.PI * r * r;
         double obwod = 2 * Math.PI * r;
@@ -249,8 +255,7 @@ internal class Program
 
     private static void FunkcjeTrygonometryczne()
     {
-        Console.Write("Podaj kąt w stopniach: ");
-        double kat = Convert.ToDouble(Console.ReadLine());
+        double kat = PobierzLiczbe("Podaj kąt w stopniach: ");
         double katRad = Math.PI * kat / 180.0; // Konwersja stopni na radiany
 
         Console.WriteLine($"Sin: {Math.Sin(katRad)}");

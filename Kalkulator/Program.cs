@@ -258,39 +258,100 @@ internal class Program
             Console.WriteLine("\nWybierz rodzaj czworokąta:");
             Console.WriteLine("1. Kwadrat");
             Console.WriteLine("2. Prostokąt");
-            Console.WriteLine("3. Powrót do menu figur");
-            Console.Write("Wybierz opcję (1-3): ");
+            Console.WriteLine("3. Równoległobok");
+            Console.WriteLine("4. Trapez");
+            Console.WriteLine("5. Powrót do menu figur");
+            Console.Write("Wybierz opcję (1-5): ");
             string wyborCzworokata = Console.ReadLine();
 
-            if (wyborCzworokata == "1")
+            switch (wyborCzworokata)
             {
-                double bok = PobierzLiczbe("Podaj długość boku: ");
-                double pole = bok * bok;
-                double obwod = 4 * bok;
-                Console.WriteLine($"Pole: {pole}, Obwód: {obwod}");
-            }
-            else if (wyborCzworokata == "2")
-            {
-                double a = PobierzLiczbe("Podaj długość pierwszego boku: ");
-                double b = PobierzLiczbe("Podaj długość drugiego boku: ");
-                double pole = a * b;
-                double obwod = 2 * (a + b);
-                Console.WriteLine($"Pole: {pole}, Obwód: {obwod}");
-            }
-            else if (wyborCzworokata == "3")
-            {
-                return; // Powrót do menu figur
-            }
-            else
-            {
-                Console.WriteLine("Niepoprawna opcja. Spróbuj ponownie.");
+                case "1":
+                    double bokKwadrat = PobierzLiczbe("Podaj długość boku: ");
+                    Console.WriteLine($"Pole: {bokKwadrat * bokKwadrat}, Obwód: {4 * bokKwadrat}");
+                    break;
+
+                case "2":
+                    double aProstokat = PobierzLiczbe("Podaj długość pierwszego boku: ");
+                    double bProstokat = PobierzLiczbe("Podaj długość drugiego boku: ");
+                    Console.WriteLine($"Pole: {aProstokat * bProstokat}, Obwód: {2 * (aProstokat + bProstokat)}");
+                    break;
+
+                case "3":
+                    double aRownoleglobok = PobierzLiczbe("Podaj długość podstawy: ");
+                    double hRownoleglobok = PobierzLiczbe("Podaj wysokość: ");
+                    Console.WriteLine($"Pole: {aRownoleglobok * hRownoleglobok}");
+                    break;
+
+                case "4":
+                    double aTrapez = PobierzLiczbe("Podaj długość pierwszej podstawy: ");
+                    double bTrapez = PobierzLiczbe("Podaj długość drugiej podstawy: ");
+                    double hTrapez = PobierzLiczbe("Podaj wysokość: ");
+                    Console.WriteLine($"Pole: {((aTrapez + bTrapez) * hTrapez) / 2}");
+                    break;
+
+                case "5":
+                    return; // Powrót do menu figur
+
+                default:
+                    Console.WriteLine("Niepoprawna opcja. Spróbuj ponownie.");
+                    break;
             }
         }
     }
 
     private static void ObliczeniaTrojkat()
     {
-        Console.WriteLine("Obliczenia dla trójkątów jeszcze nie są zaimplementowane.");
+        while (true)
+        {
+            Console.WriteLine("\nWybierz rodzaj trójkąta:");
+            Console.WriteLine("1. Równoboczny");
+            Console.WriteLine("2. Równoramienny");
+            Console.WriteLine("3. Prostokątny");
+            Console.WriteLine("4. Ostry (kąt + boki)");
+            Console.WriteLine("5. Trójkąt (podstawa + wysokość)");
+            Console.WriteLine("6. Powrót do menu figur");
+            Console.Write("Wybierz opcję (1-6): ");
+            string wyborTrojkata = Console.ReadLine();
+
+            switch (wyborTrojkata)
+            {
+                case "1":
+                    double bok = PobierzLiczbe("Podaj długość boku: ");
+                    Console.WriteLine($"Pole: {(Math.Sqrt(3) / 4) * bok * bok}, Obwód: {3 * bok}");
+                    break;
+
+                case "2":
+                    double bokA = PobierzLiczbe("Podaj długość podstawy: ");
+                    double bokB = PobierzLiczbe("Podaj długość ramienia: ");
+                    double wysokosc = Math.Sqrt(bokB * bokB - (bokA * bokA) / 4);
+                    Console.WriteLine($"Pole: {(bokA * wysokosc) / 2}, Obwód: {2 * bokB + bokA}");
+                    break;
+
+                case "3":
+                    double przyprostokatna1 = PobierzLiczbe("Podaj długość pierwszej przyprostokątnej: ");
+                    double przyprostokatna2 = PobierzLiczbe("Podaj długość drugiej przyprostokątnej: ");
+                    Console.WriteLine($"Pole: {(przyprostokatna1 * przyprostokatna2) / 2}");
+                    break;
+
+                case "4":
+                    Console.WriteLine("Funkcjonalność dla obliczeń trójkąta ostrego jeszcze nie jest zaimplementowana.");
+                    break;
+
+                case "5":
+                    double podstawa = PobierzLiczbe("Podaj długość podstawy: ");
+                    double wys = PobierzLiczbe("Podaj wysokość: ");
+                    Console.WriteLine($"Pole: {(podstawa * wys) / 2}");
+                    break;
+
+                case "6":
+                    return; // Powrót do menu figur
+
+                default:
+                    Console.WriteLine("Niepoprawna opcja. Spróbuj ponownie.");
+                    break;
+            }
+        }
     }
 
     private static void ObliczeniaKolo()
